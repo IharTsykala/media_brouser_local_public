@@ -1,0 +1,13 @@
+[data-ui="Card"].layout-gallery-img {
+  &__outside {
+    min-height: 256px;
+    border: 1px solid #DDE5EB;
+    box-sizing: border-box;
+    margin-bottom: 18px;
+    background: #F5F8FA;
+
+    &--empty {
+      background: #EDF4EC;
+    }
+  }
+}

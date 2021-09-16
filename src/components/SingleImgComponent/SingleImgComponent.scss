@@ -1,0 +1,35 @@
+
+
+.single-img {
+  &__img {
+    max-width: 224px;
+    max-height: 224px;
+    height: 224px;
+    object-fit: contain;
+    margin: auto;
+  }
+
+  &__header {
+    text-align: center;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 30px;
+    margin-top: 24px;
+  }
+
+  &__buttons {
+    position: absolute;
+    top: 0;
+    left: calc(50% + 112px);
+    height: 224px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 24px;
+
+    button {
+      @extend %btn-reset;
+    }
+  }
+}

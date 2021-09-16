@@ -1,0 +1,35 @@
+.empty-container-img {
+  text-align: center;
+  font-family: 'Cera Pro', sans-serif;
+  font-style: normal;
+  font-weight: normal;
+
+  &__header-text {
+    &.above {
+      font-size: 20px;
+      line-height: 30px;
+      color: #000000;
+      margin: 4px 0px;
+    }
+    &.below {
+      font-size: 16px;
+      line-height: 24px;
+      color: #A6A6A6;
+      margin: 4px 0px;      
+    }
+  }
+
+  &__button[type="button"] {
+    margin: 0px 10px;
+    background-color: #C6E2E9;
+    border: none;
+    box-shadow: none;
+    min-height: 44px;
+    color: #37383D;
+    font-size: 16px;
+    line-height: 24px;
+    svg {
+      margin-right: 12px;
+    }
+  }
+}
