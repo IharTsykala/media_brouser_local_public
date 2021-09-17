@@ -1,5 +1,5 @@
 {
-  "name": "Media Brouser",
+  "name": "media-brouser",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -62,5 +62,5 @@
     "eslint-plugin-react-redux": "^3.3.2",
     "prettier": "^2.4.0"
   },
-  "homepage": "https://IharTsykala.github.io"
+  "homepage": "https://ihartsykala.github.io/media_brouser_local_public"
 }

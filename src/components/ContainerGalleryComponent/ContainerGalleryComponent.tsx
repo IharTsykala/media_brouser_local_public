@@ -16,6 +16,8 @@ import bigViewImg from "../../assets/pictures/bigViewImg.svg";
 // @ts-ignore
 import listViewImg from "../../assets/pictures/listViewImg.svg";
 import GalleryToolsComponent from "../GalleryToolsComponent/GalleryToolsComponent";
+import { useSelector } from "react-redux"
+import { RootState } from "../../App";
 
 type GalleryContainerComponentProps = {
     galleryArrayContentCard: InterfaceContentCard[];
@@ -53,14 +55,21 @@ const ContainerGalleryComponent: React.FunctionComponent<GalleryContainerCompone
 
     const columnsForCards = statusViewGallery === "bigImg"? [3]: [1]
 
+    const getGalleryArrayContentCard =
+      (namePage: string, videoGallery: [], galleryArrayContentCard:InterfaceContentCard[]) =>
+        namePage === "video-list"? videoGallery: galleryArrayContentCard
+
+    const arrayVideo = useSelector<RootState, {arrayVideo:[]}>((state) => state.video).arrayVideo;
+      console.log(arrayVideo)
+
         return (
             <LayoutContainerImg
-                headerName={"gallery img"}
+                headerName={`gallery ${namePage}`}
                 isEmpty={statusEmptyBox}
             >
                 {!statusEmptyBox &&
                 <>
-                    {statusViewGallery === "listImg" && <SingleFileDataComponent
+                    {statusViewGallery === "listImg" && namePage === "img-gallery" && <SingleFileDataComponent
                         contentCard={contentCardForHeaderListFiles}
                         setArrayContentCard={setGalleryArrayContentCard}
                         arrayContentCard={galleryArrayContentCard}
@@ -69,7 +78,8 @@ const ContainerGalleryComponent: React.FunctionComponent<GalleryContainerCompone
                         namePage={namePage}
                     />}
                     <Grid className={"container-gallery-img"} columns={columnsForCards} gap={2}>
-                        {galleryArrayContentCard?.map((contentCard: InterfaceContentCard, index: number)=>{
+                        {getGalleryArrayContentCard(namePage, arrayVideo, galleryArrayContentCard)
+                          ?.map((contentCard: InterfaceContentCard, index: number)=>{
                             return(
                                 <React.Fragment key={index}>
                                     {namePage === "img-gallery" && <LayoutContainerDragAndDrop
@@ -95,10 +105,10 @@ const ContainerGalleryComponent: React.FunctionComponent<GalleryContainerCompone
                                             namePage={namePage}
                                         />}
                                     </LayoutContainerDragAndDrop>}
-                                    {statusViewGallery === "video-list" && <SingleFileDataComponent
+                                    {namePage === "video-list" && <SingleFileDataComponent
                                         contentCard={contentCard}
                                         setArrayContentCard={setGalleryArrayContentCard}
-                                        arrayContentCard={galleryArrayContentCard}
+                                        arrayContentCard={arrayVideo}
                                         setStatusCommonCheckBox={setStatusCommonCheckBox}
                                         statusCommonCheckBox={statusCommonCheckBox}
                                         setStatusDragAndDrop={setStatusDragAndDrop}

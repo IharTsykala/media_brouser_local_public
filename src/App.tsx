@@ -12,6 +12,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom"
 import ImgGalleryPage from "./Pages/ImgGalleryPage/ImgGalleryPage";
 import ImgSinglePage from "./Pages/ImgSinglePage/ImgSinglePage";
 import videoSaga from "./Redux/store/video/video.saga";
+export type RootState = ReturnType<typeof store.getState>;
 
 const sagaMiddleware = createSagaMiddleware()
 
@@ -26,21 +27,18 @@ sagaMiddleware.run(videoSaga)
 
 const App: React.FC = () => (
   <Provider store={store}>
-      <BrowserRouter>
+       <BrowserRouter>
     <div className={"wrapper"}>
-
-        {/* <Header /> */}
-          <Switch>
+           <Switch>
         <main className={"main"}>
-            <Route component={VideoList} path="/video/list" exact />
-            <Route component={ImgSinglePage} path="/img/single" exact />
-            <Route component={ImgGalleryPage} path="/img/gallery" exact />
+            {/*<VideoList />*/}
+           <Route component={VideoList} path="/video/list/" exact />
+            <Route component={ImgSinglePage} path="/img/single/" exact />
+            <Route component={ImgGalleryPage} path="/img/gallery/" exact />
         </main>
-          </Switch>
-        {/* <Footer /> */}
-
+           </Switch>
     </div>
-          </BrowserRouter>
+           </BrowserRouter>
   </Provider>
 )
 

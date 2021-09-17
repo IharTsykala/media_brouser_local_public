@@ -5,7 +5,7 @@ import {InterfaceContentCard, Dispatch, setValueCheckBox} from "../ContainerMedi
 import dragIcon from "../../assets/pictures/dragIcon.svg"
 
 type SingleFileDataComponentProps = {
-    contentCard: InterfaceContentCard;
+    contentCard: InterfaceContentCard | any;
     setArrayContentCard: Dispatch<InterfaceContentCard[]>;
     arrayContentCard: InterfaceContentCard[];
     setStatusCommonCheckBox: Dispatch<boolean>;
@@ -42,10 +42,13 @@ const SingleFileDataComponent: React.FunctionComponent<SingleFileDataComponentPr
         }
     }
 
+  console.log(1)
+
     return (
         <>
-            {namePage === "img-gallery" && <Grid className={`single-file-data__container`} columns={[8]}
-                                                 onMouseDown={(e) => setStatusDragAndDrop && handlerSetStatusDragAndDrop(e, false)}>
+            <Grid className={`single-file-data__container`} columns={[8]}
+            onMouseDown={(e) => setStatusDragAndDrop && handlerSetStatusDragAndDrop(e, false)}>
+              {namePage === "img-gallery" &&  <>
                 <Box className={`single-file-data__drag-container`}>
                     <img className={`single-file-data__drag-icon`} src={dragIcon} alt={"drag icon"}
                          onMouseDown={(e) => setStatusDragAndDrop && handlerSetStatusDragAndDrop(e, true)}
@@ -76,12 +79,12 @@ const SingleFileDataComponent: React.FunctionComponent<SingleFileDataComponentPr
                 <Box className={`single-file-data__description-container`}>
                     <Text className={`single-file-data__description-text`}>{contentCard.description}</Text>
                 </Box>
+                </>}
+              {namePage === "video-list" && (<video width="320" height="240" controls>
+                <source src={contentCard.PlaceName} type=""/>
+              </video>)
+              }
             </Grid>
-            }
-            {namePage === "img-gallery" && (<video width="320" height="240" controls>
-                <source src="" type=""/>
-            </video>)
-            }
         </>
     )
 }
