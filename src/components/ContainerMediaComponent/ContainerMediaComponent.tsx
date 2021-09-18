@@ -10,12 +10,13 @@ import pict2 from "../../assets/pictures/pict2.png";
 import pict3 from "../../assets/pictures/pict3.png";
 // @ts-ignore
 import pict4 from "../../assets/pictures/pict4.png";
-import getContentCards, {Dispatch, getArrayBlobObjects, InterfaceContentCard, onUploadClick} from "./contentCard";
 import update from 'immutability-helper'
 import { DndProvider } from 'react-dnd'
 import { HTML5Backend } from 'react-dnd-html5-backend'
 import {useDispatch} from "react-redux";
 import {getArrayVideo} from "../../Redux/store/video/video.actions";
+import getContentCards, { getArrayBlobObjects, onUploadClick } from "../../services/functions/img"
+import { InterfaceContentCard, Dispatch } from "../../services/interfacesAndTypes/common";
 
 const singleImgArrAssets: [string] | [] = [examplePic]
 const galleryImgArrAssets: string[] | [] =

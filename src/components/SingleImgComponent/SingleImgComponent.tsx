@@ -1,6 +1,7 @@
 import React, {useState} from "react"
 import {Box} from "@sanity/ui"
-import {InterfaceContentCard, Dispatch, removeImgFromGallery} from "../ContainerMediaComponent/contentCard";
+import { InterfaceContentCard, Dispatch } from "../../services/interfacesAndTypes/common"
+import { removeImgFromGallery } from "../../services/functions/img"
 
 type SingleImgComponentProps = {
     contentCard: InterfaceContentCard | null;

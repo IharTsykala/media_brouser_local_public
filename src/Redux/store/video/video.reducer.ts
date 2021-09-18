@@ -1,9 +1,8 @@
-import { VideoItemInterface } from "../../InterfacesEntity/form.interface"
 import { ActionTypes } from "./video.actions"
-import { Action } from "../../interfacesAction/action.interface"
+import { InterfaceContentCard, Action } from "../../../services/interfacesAndTypes/common"
 
 export interface State {
-  arrayVideo: VideoItemInterface | null;
+  arrayVideo: InterfaceContentCard | null;
 }
 
 const initialState: State = {

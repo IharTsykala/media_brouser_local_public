@@ -1,10 +1,11 @@
 import React from "react"
 import {Grid, Box, Button, Text} from "@sanity/ui";
-import {Dispatch, InterfaceContentCard, removeImgFromGallery, setValueCheckBox} from "../ContainerMediaComponent/contentCard";
 // @ts-ignore
 import bigViewImg from "../../assets/pictures/bigViewImg.svg";
 // @ts-ignore
 import listViewImg from "../../assets/pictures/listViewImg.svg";
+import { InterfaceContentCard, Dispatch } from "../../services/interfacesAndTypes/common"
+import { removeImgFromGallery, setValueCheckBox } from "../../services/functions/img"
 
 type GalleryToolsComponentProps = {
     galleryArrayContentCard: InterfaceContentCard[];

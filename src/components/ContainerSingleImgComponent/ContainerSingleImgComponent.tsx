@@ -1,9 +1,10 @@
 import React from "react"
 import LayoutContainerImg from "../../layouts/LayoutContainerImg/LayoutContainerImg";
 import EmptyContainerImgComponent from "../EmptyContainerImgComponent/EmptyContainerImgComponent";
-import {Dispatch, OnDrop} from "../ContainerMediaComponent/contentCard";
 import SingleImgComponent from "../SingleImgComponent/SingleImgComponent";
-import {InterfaceContentCard} from "../ContainerMediaComponent/contentCard";
+import { InterfaceContentCard, Dispatch } from "../../services/interfacesAndTypes/common"
+import { OnDrop } from "../../services/interfacesAndTypes/img"
+
 
 type ContainerSingleImgComponentProps = {
     singleArrayContentCard: InterfaceContentCard[];

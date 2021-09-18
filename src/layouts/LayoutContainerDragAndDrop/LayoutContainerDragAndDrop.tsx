@@ -2,8 +2,9 @@ import React, {useRef} from "react";
 import {Box} from "@sanity/ui";
 import {DropTargetMonitor, useDrag, useDrop} from "react-dnd";
 import {ItemTypes} from "../../components/SingleImgComponent/itemTypes";
-import {Dispatch, findCard, findIndex, InterfaceContentCard} from "../../components/ContainerMediaComponent/contentCard";
 import {XYCoord} from "dnd-core";
+import { InterfaceContentCard, Dispatch } from "../../services/interfacesAndTypes/common";
+import { findIndex } from "../../services/functions/img";
 
 type LayoutContainerDragAndDropProps = {
     contentCard: InterfaceContentCard;

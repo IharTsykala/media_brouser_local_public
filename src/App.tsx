@@ -1,8 +1,6 @@
 import React from "react"
 import "./App.scss"
-// import Header from "./Components/Header/Header"
 import VideoList from "./Pages/VideoList/VideoList"
-// import Footer from "./Components/Footer/Footer"
 import { Provider } from "react-redux"
 import { createStore, applyMiddleware } from "redux"
 import { composeWithDevTools } from "redux-devtools-extension"
@@ -29,14 +27,13 @@ const App: React.FC = () => (
   <Provider store={store}>
        <BrowserRouter>
     <div className={"wrapper"}>
-           <Switch>
-        <main className={"main"}>
-            {/*<VideoList />*/}
-           <Route component={VideoList} path="/video/list/" exact />
+      <main className={"main"}>
+        <Switch>
+            <Route component={VideoList} path="/video/list/" exact />
             <Route component={ImgSinglePage} path="/img/single/" exact />
             <Route component={ImgGalleryPage} path="/img/gallery/" exact />
-        </main>
-           </Switch>
+        </Switch>
+      </main>
     </div>
            </BrowserRouter>
   </Provider>

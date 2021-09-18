@@ -4,8 +4,10 @@ import videoService from "../../../services/api/videoService";
 
 function* getArrayVideoSaga() {
   try {
+    // const responseNewAccessToken = yield videoService.getNewAccessToken()
     const response = yield videoService.getArrayVideoService()
-    yield put(setArrayVideo(response.Places))
+    yield put(setArrayVideo(response.data))
+    console.log(response)
   } catch (e) {
     yield put(getFailureAction(e))
   }

@@ -2,7 +2,8 @@ import React from "react";
 import {Box} from "@sanity/ui";
 import {DropTargetMonitor, useDrop} from "react-dnd";
 import { NativeTypes } from 'react-dnd-html5-backend'
-import {Dispatch, InterfaceContentCard, OnDrop} from "../../components/ContainerMediaComponent/contentCard";
+import { Dispatch, InterfaceContentCard } from "../../services/interfacesAndTypes/common"
+import { OnDrop } from "../../services/interfacesAndTypes/img";
 
 type LayoutContainerUploadProps = {
     setArrayContentCard: Dispatch<InterfaceContentCard[]>;

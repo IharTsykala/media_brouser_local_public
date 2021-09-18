@@ -2,12 +2,6 @@ import React, {useState} from "react"
 import LayoutContainerImg from "../../layouts/LayoutContainerImg/LayoutContainerImg";
 import {Grid} from "@sanity/ui";
 import SingleImgComponent from "../SingleImgComponent/SingleImgComponent";
-import {
-    ContentCard,
-    Dispatch,
-    InterfaceContentCard,
-    OnDrop
-} from "../ContainerMediaComponent/contentCard";
 import EmptyContainerImgComponent from "../EmptyContainerImgComponent/EmptyContainerImgComponent";
 import LayoutContainerDragAndDrop from "../../layouts/LayoutContainerDragAndDrop/LayoutContainerDragAndDrop";
 import SingleFileDataComponent from "../SingleFileDataComponent/SingleFileDataComponent";
@@ -18,6 +12,9 @@ import listViewImg from "../../assets/pictures/listViewImg.svg";
 import GalleryToolsComponent from "../GalleryToolsComponent/GalleryToolsComponent";
 import { useSelector } from "react-redux"
 import { RootState } from "../../App";
+import { InterfaceContentCard, Dispatch } from "../../services/interfacesAndTypes/common"
+import { OnDrop } from "../../services/interfacesAndTypes/img"
+import { ContentCard } from "../../services/functions/img";
 
 type GalleryContainerComponentProps = {
     galleryArrayContentCard: InterfaceContentCard[];
@@ -118,13 +115,13 @@ const ContainerGalleryComponent: React.FunctionComponent<GalleryContainerCompone
                             )
                         })}
                     </Grid>
-                    <GalleryToolsComponent
+                    {namePage !== "video-list" && <GalleryToolsComponent
                         galleryArrayContentCard={galleryArrayContentCard}
                         setGalleryArrayContentCard={setGalleryArrayContentCard}
                         statusViewGallery={statusViewGallery}
                         setStatusViewGallery={setStatusViewGallery}
                         setStatusDragAndDrop={setStatusDragAndDrop}
-                    />
+                    />}
                 </>}
                 {statusEmptyBox && <EmptyContainerImgComponent
                     onUploadClick={onUploadClick}

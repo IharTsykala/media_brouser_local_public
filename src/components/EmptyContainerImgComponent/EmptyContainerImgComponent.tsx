@@ -1,8 +1,10 @@
 import React, {useRef} from "react";
 import {Box, Button} from "@sanity/ui";
-import {Dispatch, handlerUploadDocument, InterfaceContentCard, OnDrop } from "../ContainerMediaComponent/contentCard";
 import LayoutContainerUpload from "../../layouts/LayoutContainerUpload/LayoutContainerUpload";
 import './EmptyContainerImgComponent.scss';
+import { InterfaceContentCard, Dispatch } from "../../services/interfacesAndTypes/common"
+import { OnDrop } from "../../services/interfacesAndTypes/img";
+import { handlerUploadDocument } from "../../services/functions/img";
 
 type EmptyContainerImgComponentProps = {
     onUploadClick: (inputElement: React.MutableRefObject<HTMLInputElement>) => void;
@@ -36,7 +38,7 @@ const EmptyContainerImgComponent: React.FunctionComponent<EmptyContainerImgCompo
     onDrop,
     typeArrayContentCard,    
 }) => {
-    const ref: React.MutableRefObject<HTMLInputElement> = useRef<HTMLInputElement>(null)
+    const ref: React.RefObject<HTMLInputElement> = useRef<HTMLInputElement>(null)
 
     return (
         <Box className={"empty-container-img"}>
