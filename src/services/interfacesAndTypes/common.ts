@@ -12,7 +12,8 @@ export interface InterfaceContentCard {
   type: string;
   dimension: string;
   size: string;
-  link?: string
+  link?: string;
+  uri?: string;
 }
 
 export type Dispatch<A> = (value: A) => void;

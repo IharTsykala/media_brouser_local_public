@@ -25,17 +25,17 @@ sagaMiddleware.run(videoSaga)
 
 const App: React.FC = () => (
   <Provider store={store}>
-       <BrowserRouter>
-    <div className={"wrapper"}>
-      <main className={"main"}>
-        <Switch>
+    <BrowserRouter>
+      <div className={"wrapper"}>
+        <main className={"main"}>
+          <Switch>
             <Route component={VideoList} path="/video/list/" exact />
             <Route component={ImgSinglePage} path="/img/single/" exact />
             <Route component={ImgGalleryPage} path="/img/gallery/" exact />
-        </Switch>
-      </main>
-    </div>
-           </BrowserRouter>
+          </Switch>
+        </main>
+      </div>
+    </BrowserRouter>
   </Provider>
 )
 

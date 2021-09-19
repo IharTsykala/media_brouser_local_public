@@ -9,17 +9,14 @@ const initialState: State = {
   arrayVideo: null,
 }
 
-export const videoReducer = (
-  state: State = initialState,
-  action: Action<[]>
-) => {
+export const videoReducer = (state: State = initialState, action: Action<[]>) => {
   switch (action.type) {
-    case ActionTypes.SET_ARRAY_FORM:
-      return {
-        ...state,
-        arrayVideo: action.payload,
-      }
-    default:
-      return state
+  case ActionTypes.SET_ARRAY_VIDEO:
+    return {
+      ...state,
+      arrayVideo: action.payload,
+    }
+  default:
+    return state
   }
 }

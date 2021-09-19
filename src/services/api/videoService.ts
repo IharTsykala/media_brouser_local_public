@@ -1,19 +1,19 @@
-const axios = require("axios")
+import { removeCardById } from "../../Redux/store/video/video.actions"
 
+const axios = require("axios")
 const host = process.env.REACT_APP_HOST || "https://api.vimeo.com"
 
-const clientIdentifier = "ad8e3f1947b97a05ec3e6c40ff2daee1c367901c"
 const userId = "151396534"
-const accessToken = "6b972ed6f553cac9c3c5cef2eb3fbe00"
+const accessToken = "44c2627337c4ddb92f55eccd42e82229"
 
 export default class videoService {
 
   static getNewAccessToken = async () => {
-    const response = await axios.post(
+    const newAccessToken = await axios.post(
       `${host}/oauth/authorize/client`,
       {
         "grant_type": "client_credentials",
-        "scope": "public"
+        "scope": "private purchased create edit delete interact upload promo_codes video_files scim public"
       },
       {
         headers: {
@@ -23,22 +23,66 @@ export default class videoService {
         },
       }
     )
-
-    return response.data
+    console.log(newAccessToken.data)
+    // const redirectUser = await axios.get(
+    //   `${host}/oauth/authorize?response_type=code&client_id=${newAccessToken.data.access_token}&redirect_uri=${host}${newAccessToken.data.app.uri}&state="helloUser"&scope=${newAccessToken.data.scope}`,
+    //   {
+    //     headers: {
+    //       'Content-Type': 'application/json',
+    //       // 'Authorization': `bearer ${accessToken}`,
+    //       'Accept': 'application/vnd.vimeo.*+json;version=3.4',
+    //     },
+    //   }
+    // )
+    //
+    // console.log(redirectUser.data)
+    return newAccessToken.data
   }
 
     static getArrayVideoService = async () => {
-        const response = await axios.get(
-            `${host}/users/${userId}/videos`,
-            {
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `bearer ${accessToken}`,
-                    'Accept': 'application/vnd.vimeo.*+json;version=3.4',
-                },
-            }
+      const response = await axios.get(
+        `${host}/users/${userId}/videos`,
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `bearer ${accessToken}`,
+            'Accept': 'application/vnd.vimeo.*+json;version=3.4',
+          },
+        }
+      )
+      console.log(response)
+      return response.data
+    }
+
+    static removeCardByIdService = async (id: string | number, newAccessToken: string) => {
+
+      const responseRemove = await axios.delete(
+        `${host}${id}`,
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `bearer ${newAccessToken}`,
+            'Accept': 'application/vnd.vimeo.*+json;version=3.4',
+          },
+        }
+      )
+      console.log(responseRemove)
+      // return response.data
+    }
+
+      static editCardByIdService = async (id: string | number, newAccessToken: string) => {
+        const response = await axios.patch(
+          `${host}${id}`,
+          {},
+          {
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `bearer ${newAccessToken}`,
+              'Accept': 'application/vnd.vimeo.*+json;version=3.4',
+            },
+          }
         )
         console.log(response)
         return response.data
-    }
+      }
 }
