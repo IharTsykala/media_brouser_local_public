@@ -14,7 +14,7 @@ function* getArrayVideoSaga() {
 
 function* removeCardByIdSaga(action: any) {
   try {
-    const responseAccessToken = yield videoService.getNewAccessToken()
+    const responseAccessToken = yield videoService.getNewAccessTokenService(action.payload)
     const response = yield videoService.removeCardByIdService(action.payload, responseAccessToken.access_token)
 
     console.log("remove",response)
@@ -25,7 +25,7 @@ function* removeCardByIdSaga(action: any) {
 
 function* editCardByIdSaga(action: any) {
   try {
-    const responseAccessToken = yield videoService.getNewAccessToken()
+    const responseAccessToken = yield videoService.getNewAccessTokenService(action.payload)
     const response = yield videoService.editCardByIdService(action.payload, responseAccessToken.access_token)
 
     console.log("edit",response)

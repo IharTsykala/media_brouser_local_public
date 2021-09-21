@@ -18,14 +18,14 @@ export const setArrayVideo = (arrayVideo: InterfaceContentCard[]): Action<Interf
   payload: arrayVideo,
 })
 
-export const removeCardById = (id: number | string): Action<number | string> => ({
+export const removeCardById = (uriVideo: number | string): Action<number | string> => ({
   type: ActionTypes.REMOVE_CARD_BY_ID,
-  payload: id,
+  payload: uriVideo,
 })
 
-export const editCardById = (id: number | string): Action<number | string> => ({
+export const editCardById = (uriVideo: number | string): Action<number | string> => ({
   type: ActionTypes.EDIT_CARD_BY_ID,
-  payload: id,
+  payload: uriVideo,
 })
 
 export const getFailureAction = (error?: string): Action<string> => ({

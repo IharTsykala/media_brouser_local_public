@@ -12,8 +12,8 @@ const SingleFileDataVideoComponent: React.FunctionComponent<SingleFileDataVideoC
   ({ contentCard }) => {
 
     const dispatch = useDispatch()
-    const handlerRemoveCard = (id: string | number | undefined) => id && dispatch(removeCardById(id))
-    const handlerEditCard = (id: string | number | undefined) => id && dispatch(editCardById(id))
+    const handlerRemoveCard = (uriVideo: string | number | undefined) => uriVideo && dispatch(removeCardById(uriVideo))
+    const handlerEditCard = (uriVideo: string | number | undefined) => uriVideo && dispatch(editCardById(uriVideo))
 
     return (
       <>
