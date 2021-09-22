@@ -13,10 +13,11 @@ import pict4 from "../../assets/pictures/pict4.png"
 import update from "immutability-helper"
 import { DndProvider } from "react-dnd"
 import { HTML5Backend } from "react-dnd-html5-backend"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { getArrayVideo } from "../../Redux/store/video/video.actions"
 import getContentCards, { getArrayBlobObjects, onUploadClick } from "../../services/functions/img"
 import { InterfaceContentCard, Dispatch } from "../../services/interfacesAndTypes/common"
+import { RootState } from "../../App"
 
 const singleImgArrAssets: [string] | [] = [examplePic]
 const galleryImgArrAssets: string[] | [] = [
@@ -40,12 +41,14 @@ const ContainerMediaComponent: React.FunctionComponent<ContainerImgComponentProp
   const [galleryArrayContentCard, setGalleryArrayContentCard] = useState(getContentCards(galleryImgArrAssets))
 
   const dispatch = useDispatch()
+  // eslint-disable-next-line react-redux/useSelector-prefer-selectors
+  const arrayVideo = useSelector<RootState, {arrayVideo:[]}>((state) => state.video).arrayVideo;
 
   useEffect(() => {
-    if (namePage === "video-list") {
+    if (namePage === "video-list" && !arrayVideo?.length) {
       dispatch(getArrayVideo())
     }
-  }, [dispatch, namePage])
+  }, [dispatch, namePage, arrayVideo])
 
   // for drag and drop in gallery without upload
   const moveCard = useCallback(

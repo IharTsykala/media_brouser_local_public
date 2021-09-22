@@ -1,6 +1,7 @@
 import { Action, InterfaceContentCard } from "../../../services/interfacesAndTypes/common"
 
 export const ActionTypes = {
+  GET_AUTH_VIDEO: "[VIDEO] Get auth video",
   GET_ARRAY_VIDEO: "[VIDEO] Get array video",
   SET_ARRAY_VIDEO: "[VIDEO] Set array video",
   REMOVE_CARD_BY_ID: "[VIDEO] Remove card by id",
@@ -8,6 +9,11 @@ export const ActionTypes = {
 
   GET_FAILURE: "[getFailureAction] get failure action",
 }
+
+export const getAuthVideo = (code: string, state: string): Action<{code: string, state: string}> => ({
+  type: ActionTypes.GET_AUTH_VIDEO,
+  payload: { code, state }
+})
 
 export const getArrayVideo = (): Action<never> => ({
   type: ActionTypes.GET_ARRAY_VIDEO

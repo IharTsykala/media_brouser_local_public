@@ -1,12 +1,23 @@
 import { put, takeEvery } from "redux-saga/effects"
-import { ActionTypes, getFailureAction, setArrayVideo } from "./video.actions"
+import { ActionTypes, getAuthVideo, getFailureAction, setArrayVideo } from "./video.actions"
 import videoService from "../../../services/api/videoService";
+const stateWord = "helloUser"
+
+function* getAuthVideoSaga(action: any) {
+  try {
+    if(action.payload.state !== stateWord) {
+      return
+    }
+    const response = yield videoService.getNewAccessTokenService(action.payload.code)
+  } catch (e) {
+    console.log(e)
+  }
+}
 
 function* getArrayVideoSaga() {
   try {
     const response = yield videoService.getArrayVideoService()
     yield put(setArrayVideo(response.data))
-    console.log("getArray", response)
   } catch (e) {
     yield put(getFailureAction(e))
   }
@@ -14,10 +25,7 @@ function* getArrayVideoSaga() {
 
 function* removeCardByIdSaga(action: any) {
   try {
-    const responseAccessToken = yield videoService.getNewAccessTokenService(action.payload)
-    const response = yield videoService.removeCardByIdService(action.payload, responseAccessToken.access_token)
-
-    console.log("remove",response)
+    const response = yield videoService.removeCardByIdService(action.payload)
   } catch (e) {
     yield put(getFailureAction(e))
   }
@@ -25,16 +33,14 @@ function* removeCardByIdSaga(action: any) {
 
 function* editCardByIdSaga(action: any) {
   try {
-    const responseAccessToken = yield videoService.getNewAccessTokenService(action.payload)
-    const response = yield videoService.editCardByIdService(action.payload, responseAccessToken.access_token)
-
-    console.log("edit",response)
+    const response = yield videoService.getNewAccessTokenService(action.payload)
   } catch (e) {
     yield put(getFailureAction(e))
   }
 }
 
 export default function* videoSaga() {
+  yield takeEvery(ActionTypes.GET_AUTH_VIDEO, getAuthVideoSaga)
   yield takeEvery(ActionTypes.GET_ARRAY_VIDEO, getArrayVideoSaga)
   yield takeEvery(ActionTypes.REMOVE_CARD_BY_ID, removeCardByIdSaga)
   yield takeEvery(ActionTypes.EDIT_CARD_BY_ID, editCardByIdSaga)
